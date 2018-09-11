@@ -16,23 +16,32 @@
 
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 </head>
+
 <body>
-    <div class="wrapper">
-        <aside id="sidebar" class="main_sidebar">
-            <ul>
-                <li id="toggleMenu" class="toggled" ><i class="fas fa-align-justify" onclick="myFunction()"></i><a href="#"></a></li>
-                <li class="submenu"><i class="fab fa-product-hunt"></i><a href="#">producten</a></li>
-                <li class="submenu"><i class="fas fa-users"></i><a href="#">leden</a></li>
-            </ul>
-        </aside>
-    </div>
     <app-root></app-root>
 </body>
 
 <script>
+
+  $(function() {
+    $('.submenu').on('click', function() {
+        $('.submenu').removeClass('active');
+        $(this).addClass('active');
+        
+    });
+});
+
     function myFunction() {
-       var element = document.getElementById("sidebar");
-       
-    }
+       var sidebar = document.getElementById("sidebar");
+       var main_content = document.getElementById("main_content");
+       if (sidebar.className == "main_sidebar collapsed"){
+            sidebar.className = "main_sidebar uncollapsed";
+            main_content.className = "main_content_uncollapsed"
+       } else {
+            sidebar.className = "main_sidebar collapsed";
+            main_content.className = "main_content_collapsed"
+       }
+    }    
 </script>
+    
 </html>
